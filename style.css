@@ -70,11 +70,11 @@ body {
 }
 
 .card {
-    width: 320px;
+    width: 330px;
     aspect-ratio: 3 / 4;
     background: #1d1962;
     border-radius: 24px;
-    padding: 30px 30px 60px 30px; 
+    padding: 50px 30px 60px 30px; 
     border: 1px solid rgba(30, 144, 255, 0); 
     transform-style: preserve-3d;
     display: flex;
@@ -97,7 +97,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: px;
     transform: translateZ(50px); 
 }
 
