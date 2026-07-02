@@ -122,7 +122,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 2px;
     transform: translateZ(50px); 
 }
 
@@ -175,14 +176,14 @@ body {
 
 .card-content h2 { 
     margin: 0 0 10px; 
-    font-size: 28px; 
+    font-size: 30px; 
     font-weight: 600; 
     text-align: center; 
 }
 
 .card-content p { 
     font-size: 15px; 
-    color: #d9ebff; 
+    color: #b3d7ff; 
     margin-bottom: 20px;
     font-weight: 300;  
     line-height: 1.6; 
