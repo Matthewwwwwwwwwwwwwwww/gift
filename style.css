@@ -1,0 +1,201 @@
+/* Базовые настройки страницы */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #040220;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    overflow: hidden; 
+    position: relative;
+}
+
+/* === СЛОЙ 1: ЗВЕЗДЫ === */
+#stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+.star {
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+    color: #FFD700;
+    font-size: 14px;
+    opacity: 0;
+    margin-top: -7px;
+    margin-left: -7px;
+    animation: sparkle 3s ease-out infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes sparkle {
+    0% {
+        transform: translate(0px, 0px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1; 
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(var(--scale)) rotate(180deg);
+        opacity: 0; 
+    }
+}
+
+/* === СЛОЙ 2: КАРТОЧКА === */
+.card-wrapper {
+    position: relative;
+    z-index: 10; 
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.card {
+    width: 320px;
+    aspect-ratio: 3 / 4;
+    background: #1d1962;
+    border-radius: 24px;
+    padding: 30px;
+    
+    /* Делаем базовую прозрачную обводку */
+    border: 1px solid rgba(30, 144, 255, 0); 
+    
+    transform-style: preserve-3d;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    
+    /* ЗАПУСКАЕМ АНИМАЦИЮ ОБВОДКИ (в такт свече 2.5s) */
+    animation: border-flicker 2.5s ease-in-out infinite;
+}
+/* === АНИМАЦИЯ СВЕЧЕНИЯ ОБВОДКИ === */
+@keyframes border-flicker {
+    0%, 100% {
+        /* Меняем только цвет самой обводки */
+        border-color: rgba(218, 255, 30, 0.2);
+    }
+    25% {
+        border-color: rgba(229, 255, 30, 0.1);
+    }
+    50% {
+        /* Самый яркий момент обводки */
+        border-color: rgba(250, 240, 135, 0.4);
+    }
+    75% {
+        border-color: rgba(255, 229, 30, 0.2);
+    }
+}
+
+/* === КОНТЕЙНЕР ДЛЯ ТОРТА И СВЕЧЕНИЯ === */
+.cake-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transform: translateZ(50px); 
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain; 
+    position: relative;
+    z-index: 2; 
+    margin-bottom: 0;
+    /* Увеличиваем картинку на 30%, не сдвигая текст вниз */
+    transform: scale(1.3); 
+}
+
+/* Эффект свечения */
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Свечение тоже сделали пропорционально больше */
+    width: 210px;
+    height: 210px;
+    z-index: 1; 
+    background: radial-gradient(circle, rgba(135, 206, 250, 0.6) 0%, rgba(30, 144, 255, 0.2) 50%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(20px);
+    animation: candle-flicker 2.5s ease-in-out infinite;
+}
+
+@keyframes candle-flicker {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translate(-52%, -49%) scale(0.92);
+        opacity: 0.55;
+    }
+    50% {
+        transform: translate(-49%, -51%) scale(1.1);
+        opacity: 0.85;
+    }
+    75% {
+        transform: translate(-51%, -48%) scale(0.97);
+        opacity: 0.65;
+    }
+}
+
+.card-content {
+    transform: translateZ(30px);
+}
+
+/* Заголовок выровнен по центру */
+.card-content h2 { 
+    margin: 0 0 10px; 
+    font-size: 28px; 
+    font-weight: 600; 
+    text-align: center; 
+}
+
+.card-content p { 
+    font-size: 15px; 
+    color: #e0eeff; 
+    margin-bottom: 20px; 
+    line-height: 1.4; 
+}
+
+/* === ОФОРМЛЕНИЕ ТЕКСТА И SVG-ИКОНОК === */
+.details { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    font-size: 14px; 
+    opacity: 0.8; 
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    fill: #FFD700; 
+    flex-shrink: 0;
+}
